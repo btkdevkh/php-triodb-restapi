@@ -15,7 +15,9 @@ class Triosound extends Controller {
   public function getTriosounds () {
     $triosounds = $this->model->getTriosounds();
     foreach($triosounds as $triosound) {
-      $triosound->cover_path = URLROOT . URL_IMG . $triosound->cover_path;
+      $triosound->createdAt = date_format(date_create($triosound->createdAt), 'd/m/Y');
+      $triosound->coverUrl = URLROOT . URL_IMG . $triosound->coverUrl;
+      $triosound->songUrl = URLROOT . URL_SONG . $triosound->songUrl;
     }
     Model::json($triosounds);
   }

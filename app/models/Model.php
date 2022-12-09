@@ -12,7 +12,10 @@ class Model extends Database {
   }
 
   public static function json ($datas) {
-    header('Access-Control-Allow-Origin: *');
-    echo json_encode($datas);
+    header("Access-Control-Allow-Origin: *");
+    header('Content-Type: application/json');
+    header("Access-Control-Allow-Methods: PUT, DELETE, GET, POST");
+    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    echo json_encode(["items" => $datas]);
   }
 }
