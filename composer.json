@@ -1,0 +1,15 @@
+{
+    "name": "amcjk/php-triosound",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "btkdevkhdelli5",
+            "email": "amcjkbtk91@outlook.com"
+        }
+    ],
+    "require": {}
+}
