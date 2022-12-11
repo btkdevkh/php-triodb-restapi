@@ -5,7 +5,7 @@ namespace App\libraries;
 use Error;
 
 class Core {   
-  protected $currentController = 'Triosound';
+  protected $currentController = '';
   protected $currentMethod = 'index';
   protected $params = []; 
 
@@ -17,20 +17,25 @@ class Core {
       // echo '</pre>';
 
       if(!isset($url)) {
-        throw new Error('Must contains "api/triosound" convention');
-      }
-      if(!isset($url[0]) || !isset($url[1])) {
-        throw new Error('Must contains "api/triosound" convention');
+        throw new Error('Must contains "api" convention');
       }
 
-      if(!str_contains ($url[0], 'api') || !str_contains ($url[1], 'triosound')) {
-        throw new Error('Must contains "api/triosound"');
+      if(!isset($url[0])) {
+        throw new Error('Must contains "api" convention');
+      }
+
+      if(!str_contains($url[0], 'api')) {
+        throw new Error('Must contains "api"');
+      }
+
+      if(!isset($url[1])) {
+        throw new Error('Must contains "controller name"');
       }
 
       $this->currentController = ucwords($url[1]);
       unset($url[0]);
       unset($url[1]);
-
+      
       $this->currentController = "App\controllers\\" . strtolower($this->currentController) . "\\" . $this->currentController;
       $this->currentController = new $this->currentController;
 
