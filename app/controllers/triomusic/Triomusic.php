@@ -16,8 +16,8 @@ class Triomusic extends Controller {
     $triomusics = $this->model->getTriomusics();
     foreach($triomusics as $triomusic) {
       $triomusic->createdAt = date_format(date_create($triomusic->createdAt), 'd/m/Y');
-      $triomusic->coverUrl = URLROOT . URL_SONGCOVER . $triomusic->coverUrl;
-      $triomusic->songUrl = URLROOT . URL_SONG . $triomusic->songUrl;
+      $triomusic->coverUrl = URLROOT . URL_MUSICCOVER . $triomusic->coverUrl;
+      $triomusic->songUrl = URLROOT . URL_MUSIC . $triomusic->songUrl;
     }
     Model::json($triomusics);
   }
